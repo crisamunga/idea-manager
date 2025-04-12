@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.interview.ideamanager.R
 import com.interview.ideamanager.databinding.FragmentAddEditTaskDialogBinding
@@ -20,13 +23,14 @@ private const val TASK_ID = "TASK_ID"
  */
 class AddEditTaskDialogFragment : BottomSheetDialogFragment() {
     // TODO: Rename and change types of parameters
-    private var taskId: Int? = null
+    private var _taskId: Int? = null
     private lateinit var _binding: FragmentAddEditTaskDialogBinding
+    private val _viewModel: AddEditTaskViewModel by viewModels { AppViewModelProvider.Factory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            taskId = it.getInt(TASK_ID)
+            _taskId = it.getInt(TASK_ID)
         }
     }
 
@@ -36,6 +40,16 @@ class AddEditTaskDialogFragment : BottomSheetDialogFragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentAddEditTaskDialogBinding.inflate(inflater, container, false)
+
+        if (_taskId == null) {
+            _binding.tvHeader.text = getString(R.string.add_task)
+            _binding.btnDelete.visibility = View.GONE
+            _binding.btnToggle.visibility = View.GONE
+        } else {
+            _binding.tvHeader.text = getString(R.string.edit_task)
+            _binding.btnDelete.visibility = View.VISIBLE
+            _binding.btnToggle.visibility = View.VISIBLE
+        }
 
         return _binding.root
     }
