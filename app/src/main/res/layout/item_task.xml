@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <CheckBox
+        android:id="@+id/checkbox_done"
+        android:layout_width="@dimen/clickable_large"
+        android:layout_height="@dimen/clickable_large"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/spacing_12"
+        android:layout_marginEnd="@dimen/spacing_12"
+        style="@style/MaterialAlertDialog.Material3.Body.Text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/checkbox_done"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@tools:sample/lorem"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/spacing_16"
+    tools:context=".ui.AddEditTaskDialogFragment">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_task"
+        android:textAlignment="center"
+        android:padding="@dimen/spacing_12"
+        style="@style/TextAppearance.Material3.TitleMedium"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/spacing_8"
+        android:hint="@string/task_title"
+        app:boxBackgroundMode="outline"
+        android:textColorHint="?colorPrimary">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:tooltipText="Task title"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/spacing_8"
+        android:hint="@string/task_description"
+        app:boxBackgroundMode="outline"
+        android:textColorHint="?colorPrimary">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_description"
+            android:layout_width="match_parent"
+            android:gravity="top"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:minLines="7"
+            android:tooltipText="Task description"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <ImageButton
+            android:id="@+id/btn_delete"
+            android:visibility="gone"
+            android:layout_width="@dimen/clickable_large"
+            android:layout_height="@dimen/clickable_large"
+            android:layout_marginEnd="@dimen/spacing_16"
+            android:contentDescription="@string/delete_task"
+            android:src="@drawable/ic_baseline_add_24"/>
+
+        <ImageButton
+            android:id="@+id/btn_toggle"
+            android:visibility="gone"
+            android:layout_width="@dimen/clickable_large"
+            android:layout_height="@dimen/clickable_large"
+            android:layout_marginEnd="@dimen/spacing_16"
+            android:contentDescription="@string/toggle_task"
+            android:src="@drawable/ic_baseline_add_24"/>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/add_task"/>
+
+    </LinearLayout>
+
+</LinearLayout>
