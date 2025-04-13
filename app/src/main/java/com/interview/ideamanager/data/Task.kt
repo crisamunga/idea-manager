@@ -3,13 +3,13 @@ package com.interview.ideamanager.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.Date
+import java.time.LocalDate
 
 @Entity(tableName = "tasks")
 data class Task (
 
     @PrimaryKey(true)
-    val id: Long,
+    val id: Long? = null,
 
     @ColumnInfo(name = "title")
     val title: String,
@@ -18,8 +18,8 @@ data class Task (
     val description: String? = null,
 
     @ColumnInfo(name = "is_completed")
-    val isCompleted: Boolean,
+    val isCompleted: Boolean = false,
 
     @ColumnInfo(name = "due_date")
-    val dueDate: Date? = null,
+    val dueDate: LocalDate? = null,
 )

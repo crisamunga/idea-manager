@@ -16,15 +16,15 @@ interface TaskDao {
     @Update
     suspend fun update(task: Task): Int
 
-    @Delete
-    suspend fun delete(task: Task): Int
+    @Query("DELETE FROM tasks WHERE id = :taskId")
+    suspend fun delete(taskId: Long): Int
 
     @Query("SELECT * FROM tasks WHERE id = :taskId")
-    suspend fun getTaskById(taskId: Long): Flow<Task>
+    fun getTaskById(taskId: Long): Flow<Task>
 
     @Query("SELECT * FROM tasks WHERE is_completed = :isComplete")
-    suspend fun getTasksByState(isComplete: Boolean): Flow<List<Task>>
+    fun getTasksByState(isComplete: Boolean): Flow<List<Task>>
 
     @Query("SELECT * FROM tasks")
-    suspend fun getAllTasks(): Flow<List<Task>>
+    fun getAllTasks(): Flow<List<Task>>
 }

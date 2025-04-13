@@ -15,7 +15,7 @@
         app:menu="@menu/menu_main"/>
 
     <LinearLayout
-        android:id="@+id/ll_empty"
+        android:id="@+id/empty_state"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="@dimen/spacing_16"
@@ -49,6 +49,7 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_task"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

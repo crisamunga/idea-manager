@@ -52,29 +52,52 @@
             android:tooltipText="Task description"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/btn_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:padding="@dimen/spacing_16"
+        android:text="@string/pick_a_date"
+        android:gravity="start|center_vertical" />
+
+    <TextView
+        android:id="@+id/tv_date_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/accent"
+        android:paddingStart="@dimen/spacing_32"
+        android:paddingEnd="@dimen/spacing_8"
+        android:visibility="gone"
+        style="@style/TextAppearance.AppCompat.Caption"
+        tools:text="@string/this_field_is_required" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="@dimen/spacing_16"
         android:gravity="end">
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_delete"
             android:visibility="visible"
             android:layout_width="@dimen/clickable_large"
             android:layout_height="@dimen/clickable_large"
             android:layout_marginEnd="@dimen/spacing_16"
             android:contentDescription="@string/delete_task"
-            android:src="@drawable/ic_baseline_delete_outline_24"/>
+            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            app:icon="@drawable/ic_baseline_delete_outline_24"/>
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_toggle"
             android:visibility="visible"
             android:layout_width="@dimen/clickable_large"
             android:layout_height="@dimen/clickable_large"
             android:layout_marginEnd="@dimen/spacing_16"
             android:contentDescription="@string/toggle_task"
-            android:src="@drawable/ic_baseline_check_circle_outline_24"/>
+            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            app:icon="@drawable/ic_baseline_check_circle_outline_24"/>
 
         <Button
             android:id="@+id/btn_save"

@@ -1,16 +1,17 @@
 package com.interview.ideamanager.data
 
 import androidx.room.TypeConverter
+import java.time.LocalDate
 
 class Converters {
 
     @TypeConverter
-    fun fromLongToDate(value: Long?): java.util.Date? {
-        return value?.let { java.util.Date(it) }
+    fun fromLongToDate(value: Long?): LocalDate? {
+        return value?.let { LocalDate.ofEpochDay(it) }
     }
 
     @TypeConverter
-    fun fromDateToLong(date: java.util.Date?): Long? {
-        return date?.time
+    fun fromDateToLong(date: LocalDate?): Long? {
+        return date?.toEpochDay()
     }
 }

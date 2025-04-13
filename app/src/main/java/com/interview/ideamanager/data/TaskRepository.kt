@@ -12,20 +12,19 @@ class TaskRepository(private val taskDao: TaskDao) {
         return taskDao.update(task)
     }
 
-    suspend fun delete(task: Task): Int {
-        return taskDao.delete(task)
+    suspend fun delete(taskId: Long): Int {
+        return taskDao.delete(taskId)
     }
 
-    suspend fun getTaskById(taskId: Long): Flow<Task> {
+    fun getTaskById(taskId: Long): Flow<Task?> {
         return taskDao.getTaskById(taskId)
     }
 
-
-    suspend fun getTasksByState(isComplete: Boolean): Flow<List<Task>> {
+    fun getTasksByState(isComplete: Boolean): Flow<List<Task>> {
         return taskDao.getTasksByState(isComplete)
     }
 
-    suspend fun getAllTasks(): Flow<List<Task>> {
+    fun getAllTasks(): Flow<List<Task>> {
         return taskDao.getAllTasks()
     }
 
