@@ -3,6 +3,7 @@ package com.interview.ideamanager.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
@@ -42,21 +43,15 @@ class MainActivity : AppCompatActivity() {
 
 
         super.onCreate(savedInstanceState)
-
-        if (sharedPrefUtils.biometrics) {
-            authenticate()
-        }
-
         binding = ActivityMainBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         setUpToolbar()
     }
 
     override fun onResume() {
-        if (sharedPrefUtils.biometrics) {
-            authenticate()
-        }
+        authenticate()
         super.onResume()
     }
 
@@ -89,7 +84,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun authenticate() {
+        if (!sharedPrefUtils.biometrics) {
+            blockProgress = false
+            binding.root.visibility = View.VISIBLE
+            return
+        }
         blockProgress = true
+        binding.root.visibility = View.INVISIBLE
         val executor = ContextCompat.getMainExecutor(this)
         val biometricPrompt = BiometricPrompt(this, executor,
             object : BiometricPrompt.AuthenticationCallback() {
@@ -101,13 +102,13 @@ class MainActivity : AppCompatActivity() {
                             authenticate()
                         }
                         .show()
-                    blockProgress = true
                 }
 
                 override fun onAuthenticationSucceeded(
                     result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
                     blockProgress = false
+                    binding.root.visibility = View.VISIBLE
                 }
 
                 override fun onAuthenticationFailed() {
@@ -117,7 +118,6 @@ class MainActivity : AppCompatActivity() {
                             authenticate()
                         }
                         .show()
-                    blockProgress = true
                 }
             })
         val promptInfo = BiometricPrompt.PromptInfo.Builder()
