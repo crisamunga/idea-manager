@@ -50,12 +50,10 @@ class AddEditTaskDialogFragment : BottomSheetDialogFragment() {
         if (_taskId == null) {
             _binding.tvHeader.text = getString(R.string.add_task)
             _binding.btnDelete.visibility = View.GONE
-            _binding.btnToggle.visibility = View.GONE
             _binding.btnSave.text = getString(R.string.add_task)
         } else {
             _binding.tvHeader.text = getString(R.string.edit_task)
             _binding.btnDelete.visibility = View.VISIBLE
-            _binding.btnToggle.visibility = View.VISIBLE
             _binding.btnSave.text = getString(R.string.edit_task)
         }
 
@@ -78,11 +76,7 @@ class AddEditTaskDialogFragment : BottomSheetDialogFragment() {
                 } ?: run {
                     _binding.tvDateError.visibility = View.GONE
                 }
-                if (formState.isValid) {
-                    _binding.btnSave.isEnabled = true
-                } else {
-                    _binding.btnSave.isEnabled = false
-                }
+                _binding.btnSave.isEnabled = formState.isValid
             }
         }
 
@@ -157,10 +151,6 @@ class AddEditTaskDialogFragment : BottomSheetDialogFragment() {
                 date.monthValue,
                 date.dayOfMonth
             ).show()
-        }
-        _binding.btnToggle.setOnClickListener {
-            _viewModel.toggle()
-            dismiss()
         }
 
 

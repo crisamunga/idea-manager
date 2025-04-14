@@ -4,26 +4,17 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.MenuProvider
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.NavDirections
-import androidx.navigation.NavHost
-import androidx.navigation.NavHostController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.interview.ideamanager.R
@@ -45,10 +36,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,11 +43,6 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val activity = requireActivity() as AppCompatActivity
-
-        activity.setSupportActionBar(binding.toolbar)
-
-        setupMenu(activity)
         setupRecyclerView()
         observers()
         listeners()
@@ -71,27 +53,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController = findNavController();
-    }
-
-    private fun setupMenu(activity: AppCompatActivity) {
-        activity.addMenuProvider(object : MenuProvider{
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_main, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.action_settings -> {
-                        // Handle settings action
-                        navController.navigate(R.id.action_homeFragment_to_settingsFragment)
-                        true
-                    }
-
-                    else -> false
-                }
-            }
-        }, viewLifecycleOwner)
+        navController = findNavController()
     }
 
     private fun setupRecyclerView() {
@@ -121,7 +83,7 @@ class HomeFragment : Fragment() {
 
     private fun listeners() {
         binding.fabAdd.setOnClickListener { _ -> addEditTask() }
-        binding.chipGroup.setOnCheckedStateChangeListener { group, checkedIds ->
+        binding.chipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
             if (checkedIds.isNotEmpty()) {
                 viewModel.filter(checkedIds[0])
             }
@@ -165,16 +127,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun addEditTask(taskId: Long? = null) {
-//        TODO: Evaluate Bottom sheet vs separate page
-//        val action = HomeFragmentDirections.actionHomeFragmentToAddEditTaskDialogFragment(taskId)
-//        findNavController().navigate(action)
         AddEditTaskDialogFragment.newInstance(taskId).show(childFragmentManager, "AddEditTask")
     }
 
     private fun showSnackbar(message: String) {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
-    }
-
-    companion object {
     }
 }

@@ -6,14 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.HomeFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/app_name"
-        app:menu="@menu/menu_main"/>
-
     <LinearLayout
         android:id="@+id/empty_state"
         app:layout_constraintTop_toTopOf="parent"

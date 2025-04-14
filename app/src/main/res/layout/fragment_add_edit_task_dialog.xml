@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="@dimen/spacing_16"
+    android:padding="@dimen/spacing_16"
     tools:context=".ui.AddEditTaskDialogFragment">
 
 
@@ -101,17 +101,6 @@
             app:iconTint="@color/accent"
             style="@style/Widget.Material3.Button.IconButton.Outlined"
             app:icon="@drawable/ic_baseline_delete_outline_24"/>
-
-        <Button
-            android:id="@+id/btn_toggle"
-            android:visibility="visible"
-            android:layout_width="@dimen/clickable_large"
-            android:layout_height="@dimen/clickable_large"
-            android:layout_marginEnd="@dimen/spacing_16"
-            android:contentDescription="@string/toggle_task"
-            app:iconTint="@color/success"
-            style="@style/Widget.Material3.Button.IconButton.Outlined"
-            app:icon="@drawable/ic_baseline_check_circle_outline_24" />
 
         <Button
             android:id="@+id/btn_save"
