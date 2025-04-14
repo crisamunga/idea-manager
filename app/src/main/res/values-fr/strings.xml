@@ -30,4 +30,7 @@
     <string name="cancel">Annuler</string>
     <string name="authentication_failed">L\'authentification a échoué</string>
     <string name="authentication_error">Erreur d\'authentification: %1$s</string>
+    <string name="all">Toute</string>
+    <string name="pending">En attente</string>
+    <string name="complete">Complète</string>
 </resources>

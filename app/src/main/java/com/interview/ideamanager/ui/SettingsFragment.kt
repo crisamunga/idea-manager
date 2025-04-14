@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
 import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.os.LocaleListCompat
 import androidx.preference.ListPreference
 import androidx.preference.Preference
@@ -39,7 +41,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 AppCompatDelegate.setApplicationLocales(appLocale)
                 true
             }
-            it.value = it.value ?: "en"
+            it.icon = when (it.value) {
+                "en" -> ContextCompat.getDrawable(requireContext(), R.drawable.ic_usa_flag_circular)
+                "fr" -> ContextCompat.getDrawable(requireContext(), R.drawable.ic_france_flag_circular)
+                else -> ContextCompat.getDrawable(requireContext(), R.drawable.ic_usa_flag_circular)
+            }
         }
     }
 }

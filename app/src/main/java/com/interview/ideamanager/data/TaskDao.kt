@@ -20,6 +20,10 @@ interface TaskDao {
     @Query("DELETE FROM tasks WHERE id = :taskId")
     suspend fun delete(taskId: Long): Int
 
+
+    @Query("UPDATE tasks SET is_completed = :isComplete WHERE id = :taskId")
+    suspend fun updateState(taskId: Long, isComplete: Boolean)
+
     @Query("SELECT * FROM tasks WHERE id = :taskId")
     fun getTaskById(taskId: Long): Flow<Task>
 

@@ -5,4 +5,5 @@
     <dimen name="spacing_12">12dp</dimen>
     <dimen name="clickable_large">48dp</dimen>
     <dimen name="spacing_32">32dp</dimen>
+    <dimen name="text_body_large">24sp</dimen>
 </resources>

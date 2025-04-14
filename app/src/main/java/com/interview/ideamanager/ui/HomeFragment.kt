@@ -95,7 +95,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        adapter = ListTasksAdapter(listOf()) { task -> addEditTask(task.id) }
+        adapter = ListTasksAdapter(
+            listOf(),
+            onTaskClick = { task -> addEditTask(task.id) },
+            onTaskToggle = viewModel::toggleTask
+        )
         binding.recycler.adapter = adapter
     }
 
@@ -117,6 +121,11 @@ class HomeFragment : Fragment() {
 
     private fun listeners() {
         binding.fabAdd.setOnClickListener { _ -> addEditTask() }
+        binding.chipGroup.setOnCheckedStateChangeListener { group, checkedIds ->
+            if (checkedIds.isNotEmpty()) {
+                viewModel.filter(checkedIds[0])
+            }
+        }
     }
 
     private fun permissions() {

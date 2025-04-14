@@ -52,6 +52,8 @@ class MainActivity : AppCompatActivity() {
                     super.onAuthenticationError(errorCode, errString)
                     showSnackbar(getString(R.string.authentication_error, errString))
                     blockProgress = true
+                    setResult(RESULT_CANCELED)
+                    finish()
                 }
 
                 override fun onAuthenticationSucceeded(
@@ -64,6 +66,8 @@ class MainActivity : AppCompatActivity() {
                     super.onAuthenticationFailed()
                     showSnackbar(getString(R.string.authentication_failed))
                     blockProgress = true
+                    setResult(RESULT_CANCELED)
+                    finish()
                 }
             })
         val promptInfo = BiometricPrompt.PromptInfo.Builder()

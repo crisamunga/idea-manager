@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CheckButton.Checked" parent="Widget.Material3.Button.IconButton.Filled.Tonal">
+        <item name="icon">@drawable/ic_baseline_check_24</item>
+    </style>
+    <style name="CheckButton.Unchecked" parent="Widget.Material3.Button.IconButton.Outlined">
+
+    </style>
+</resources>

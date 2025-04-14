@@ -20,7 +20,7 @@
     <string name="tasks_due_today">Tasks due today</string>
     <string name="you_have_tasks_due_today">You have %1$d tasks due today.</string>
     <string name="english">English</string>
-    <string name="french">French</string>
+    <string name="french">Français</string>
     <string name="language">Language</string>
     <string name="preferred_language_s">Preferred language: %s</string>
     <string name="enable_biometrics">Biometrics lock</string>
@@ -30,4 +30,7 @@
     <string name="cancel">Cancel</string>
     <string name="authentication_failed">Authentication failed</string>
     <string name="authentication_error">Authentication error: %1$s</string>
+    <string name="all">All</string>
+    <string name="pending">Pending</string>
+    <string name="complete">Complete</string>
 </resources>

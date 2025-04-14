@@ -33,4 +33,8 @@ class TaskRepository(private val taskDao: TaskDao) {
         return taskDao.getAllTasks()
     }
 
+    suspend fun updateState(taskId: Long, isComplete: Boolean) {
+        taskDao.updateState(taskId, isComplete)
+    }
+
 }

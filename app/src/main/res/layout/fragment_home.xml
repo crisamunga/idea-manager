@@ -42,11 +42,42 @@
 
     </LinearLayout>
 
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:checkedChip="@id/chip_all"
+        app:singleSelection="true"
+        app:selectionRequired="true"
+        android:visibility="visible"
+        android:layout_marginHorizontal="@dimen/spacing_12"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="@string/all"/>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_pending"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="@string/pending" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_completed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="@string/complete" />
+    </com.google.android.material.chip.ChipGroup>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/chip_group"
         app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
