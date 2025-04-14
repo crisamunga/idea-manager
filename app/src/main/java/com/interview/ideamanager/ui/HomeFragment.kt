@@ -21,6 +21,7 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.fragment.findNavController
@@ -59,7 +60,7 @@ class HomeFragment : Fragment() {
 
         activity.setSupportActionBar(binding.toolbar)
 
-        setupMenu()
+        setupMenu(activity)
         setupRecyclerView()
         observers()
         listeners()
@@ -73,27 +74,24 @@ class HomeFragment : Fragment() {
         navController = findNavController();
     }
 
-    private fun setupMenu() {
-        binding.toolbar.addMenuProvider(object : MenuProvider{
+    private fun setupMenu(activity: AppCompatActivity) {
+        activity.addMenuProvider(object : MenuProvider{
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_main, menu)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
-                    R.id.action_language -> {
-                        // Handle language action
-                        true
-                    }
                     R.id.action_settings -> {
                         // Handle settings action
+                        navController.navigate(R.id.action_homeFragment_to_settingsFragment)
                         true
                     }
 
                     else -> false
                 }
             }
-        })
+        }, viewLifecycleOwner)
     }
 
     private fun setupRecyclerView() {

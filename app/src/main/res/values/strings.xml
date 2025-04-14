@@ -8,7 +8,6 @@
     <string name="task_description">Task description</string>
     <string name="delete_task">Delete task</string>
     <string name="toggle_task">Toggle task</string>
-    <string name="action_language">Choose language</string>
     <string name="edit_task">Edit task</string>
     <string name="pick_a_date">Pick a date</string>
     <string name="this_field_is_required">This field is required</string>
@@ -22,4 +21,13 @@
     <string name="you_have_tasks_due_today">You have %1$d tasks due today.</string>
     <string name="english">English</string>
     <string name="french">French</string>
+    <string name="language">Language</string>
+    <string name="preferred_language_s">Preferred language: %s</string>
+    <string name="enable_biometrics">Biometrics lock</string>
+    <string name="use_fingerprint_to_unlock_the_app">Use fingerprint to unlock the app</string>
+    <string name="unlock">Unlock</string>
+    <string name="log_in_using_your_biometric_credential">Log in using your biometric credential</string>
+    <string name="cancel">Cancel</string>
+    <string name="authentication_failed">Authentication failed</string>
+    <string name="authentication_error">Authentication error: %1$s</string>
 </resources>

@@ -8,7 +8,6 @@
     <string name="task_description">Description de la tâche</string>
     <string name="delete_task">Supprimer la tâche</string>
     <string name="toggle_task">Basculer la tâche</string>
-    <string name="action_language">Choisir la langue</string>
     <string name="edit_task">Modifier la tâche</string>
     <string name="pick_a_date">Choisissez une date</string>
     <string name="this_field_is_required">Ceci est requis</string>
@@ -20,4 +19,15 @@
     <string name="allow_notifications_rationale">Nous aimerions vous tenir au courant des tâches à accomplir chaque jour.</string>
     <string name="tasks_due_today">Tâches à rendre aujourd\'hui</string>
     <string name="you_have_tasks_due_today">Vous avez %1$d tâches à effectuer aujourd\'hui.</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="language">Langue</string>
+    <string name="preferred_language_s">Langue préférée: %s</string>
+    <string name="enable_biometrics">Verrouillage biométrique</string>
+    <string name="use_fingerprint_to_unlock_the_app">Utilisez l\'empreinte digitale pour déverrouiller l\'application</string>
+    <string name="unlock">Ouvrir</string>
+    <string name="log_in_using_your_biometric_credential">Connectez-vous en utilisant vos identifiants biométriques</string>
+    <string name="cancel">Annuler</string>
+    <string name="authentication_failed">L\'authentification a échoué</string>
+    <string name="authentication_error">Erreur d\'authentification: %1$s</string>
 </resources>

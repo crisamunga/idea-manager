@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="accent">#EF5350</color>
+    <color name="success">#66BB6A</color>
 </resources>

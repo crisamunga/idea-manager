@@ -55,4 +55,7 @@ dependencies {
     implementation(libs.room.ktx)
     implementation(libs.work.ktx)
     implementation(libs.work.testing)
+    implementation(libs.androidx.splashscreen)
+    implementation(libs.androidx.biometric)
+    implementation(libs.androidx.preference)
 }
