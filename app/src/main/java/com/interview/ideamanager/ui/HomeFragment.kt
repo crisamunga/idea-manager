@@ -1,5 +1,8 @@
 package com.interview.ideamanager.ui
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,8 +11,12 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -28,6 +35,14 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels { AppViewModelProvider.Factory }
     private lateinit var adapter: ListTasksAdapter
 
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (!isGranted) {
+                showSnackbar(getString(R.string.allow_notifications_rationale))
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +63,7 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
         observers()
         listeners()
+        permissions()
 
         return binding.root
     }
@@ -103,6 +119,42 @@ class HomeFragment : Fragment() {
 
     private fun listeners() {
         binding.fabAdd.setOnClickListener { _ -> addEditTask() }
+    }
+
+    private fun permissions() {
+        when {
+            (Build.VERSION.SDK_INT <= Build.VERSION_CODES.TIRAMISU) -> {
+                return
+            }
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                return
+            }
+            ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.POST_NOTIFICATIONS) -> {
+                // In an educational UI, explain to the user why your app requires this
+                // permission for a specific feature to behave as expected, and what
+                // features are disabled if it's declined. In this UI, include a
+                // "cancel" or "no thanks" button that lets the user continue
+                // using your app without granting the permission.
+                AlertDialog.Builder(requireContext())
+                    .setTitle(getString(R.string.allow_notifications))
+                    .setMessage(getString(R.string.allow_notifications_rationale))
+                    .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                        requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                    }
+                    .setNegativeButton(getString(R.string.no), null)
+                    .show()
+            }
+            else -> {
+                // You can directly ask for the permission.
+                // The registered ActivityResultCallback gets the result of this request.
+
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+
+            }
+        }
     }
 
     private fun addEditTask(taskId: Long? = null) {

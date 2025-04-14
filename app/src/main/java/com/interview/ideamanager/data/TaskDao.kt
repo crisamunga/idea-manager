@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy.Companion.IGNORE
 import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
+import java.time.LocalDate
 
 @Dao
 interface TaskDao {
@@ -25,6 +26,9 @@ interface TaskDao {
     @Query("SELECT * FROM tasks WHERE is_completed = :isComplete")
     fun getTasksByState(isComplete: Boolean): Flow<List<Task>>
 
-    @Query("SELECT * FROM tasks")
+    @Query("SELECT * FROM tasks ORDER BY is_completed ASC, due_date ASC")
     fun getAllTasks(): Flow<List<Task>>
+
+    @Query("SELECT * FROM tasks WHERE due_date = :dueDate AND is_completed = :isComplete")
+    fun getTasksByDueDateAndStatus(dueDate: LocalDate, isComplete: Boolean): Flow<List<Task>>
 }

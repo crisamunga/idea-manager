@@ -1,6 +1,7 @@
 package com.interview.ideamanager.data
 
 import kotlinx.coroutines.flow.Flow
+import java.time.LocalDate
 
 class TaskRepository(private val taskDao: TaskDao) {
 
@@ -18,6 +19,10 @@ class TaskRepository(private val taskDao: TaskDao) {
 
     fun getTaskById(taskId: Long): Flow<Task?> {
         return taskDao.getTaskById(taskId)
+    }
+
+    fun getPendingTasksByDueDate(dueDate: LocalDate): Flow<List<Task>> {
+        return taskDao.getTasksByDueDateAndStatus(dueDate, false)
     }
 
     fun getTasksByState(isComplete: Boolean): Flow<List<Task>> {

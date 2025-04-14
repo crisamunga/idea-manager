@@ -50,4 +50,6 @@ dependencies {
     implementation(libs.room.runtime)
     ksp("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
     implementation(libs.room.ktx)
+    implementation(libs.work.ktx)
+    implementation(libs.work.testing)
 }
