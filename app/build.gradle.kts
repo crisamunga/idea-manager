@@ -34,6 +34,9 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    androidResources {
+        generateLocaleConfig = true
+    }
 }
 
 dependencies {

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">IDEA Manager</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="illustration_of_tasks">"Illustration des tâches "</string>
+    <string name="task_list_is_empty">"Votre liste de tâches est vide. Cliquez sur le bouton + ci-dessous pour ajouter une nouvelle tâche. "</string>
+    <string name="add_task">"Ajouter une tâche "</string>
+    <string name="task_title">Titre de la tâche</string>
+    <string name="task_description">Description de la tâche</string>
+    <string name="delete_task">Supprimer la tâche</string>
+    <string name="toggle_task">Basculer la tâche</string>
+    <string name="action_language">Choisir la langue</string>
+    <string name="edit_task">Modifier la tâche</string>
+    <string name="pick_a_date">Choisissez une date</string>
+    <string name="this_field_is_required">Ceci est requis</string>
+    <string name="due_date">Date d\'échéance %1$s</string>
+    <string name="delete_task_message">Êtes-vous sûr de vouloir supprimer cette tâche?</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="allow_notifications">Autoriser les notifications</string>
+    <string name="allow_notifications_rationale">Nous aimerions vous tenir au courant des tâches à accomplir chaque jour.</string>
+    <string name="tasks_due_today">Tâches à rendre aujourd\'hui</string>
+    <string name="you_have_tasks_due_today">Vous avez %1$d tâches à effectuer aujourd\'hui.</string>
+</resources>
